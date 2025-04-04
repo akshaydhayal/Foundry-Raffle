@@ -13,6 +13,10 @@ contract DeployRaffle is Script{
         //destructure above struct
         // HelperConfig.NetworkConfig memory config=helperConfig.activeConfig();
         HelperConfig.NetworkConfig memory config=helperConfig.getActiveNetworkConfig();
+
+        if(config.subscriptionId==0){
+            //create subscription id
+        }
         vm.startBroadcast();
         Raffle raffle=new Raffle({
             entranceFee:config.entranceFee,
